@@ -8,19 +8,17 @@ import NavBar from './NavBar'
 
 function MoviePage({searchedMovies}){
 
-	console.log('searchedMovies are:', searchedMovies)
-	
 	const { id } = useParams();
 
-	let movie = searchedMovies.find(movies => movies.id === id);
+	let movie = searchedMovies[id]
 	
 	return (
 		<>
 			<NavBar />
 			<SearchForm />
-			<SearchResults />
+			{/* <SearchResults /> */}
 			<MovieDetail />
-			<p>This is the movie page for {movie.title}, {movie.year}, {movie.rating}, </p>
+			<p>This is the movie page for {movie.title}, {movie.year}, {movie.rating}, votes: {movie.votes} </p>
 		</>
 	)
 }

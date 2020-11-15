@@ -1,0 +1,14 @@
+.MovieDisplay {
+  position: relative;
+}
+
+.MovieDisplay-right {
+  position: absolute;
+  right: 0;
+  top: 1em;
+  text-align: right;
+}
+
+.MovieDisplay-right i {
+  margin-left: 1em;
+}

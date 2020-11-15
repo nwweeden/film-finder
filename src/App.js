@@ -8,21 +8,30 @@ import {getTitleFromAPI, getMovieDetail} from './actions/getTitle';
 
 function App() {
 
-	const history = useHistory();
 	
-	const [searchedMovies, setSearchedMovies] = useState([]);
-
+	const [searchedMovies, setSearchedMovies] = useState({});
+	
 	async function getMovieDetails(id){
+		if (searchedMovies[id]) return;
+
 		let results = await getMovieDetail(id);
+		results.votes = 0;
+
 		setSearchedMovies(curr => {
-			return {
-				...curr,
-				id: results
-			}
+			return {...curr, [id]: results}
 		})
-		console.log('we should be redirecting')
-		
-		// history.push(`/findMovies/${id}`)
+	}
+
+	function doVote(direction, id){
+		console.log('doing vote', direction, id)
+
+		const currentMovie = searchedMovies[id];
+		if (direction === 'up') currentMovie.votes = currentMovie.votes += 1;
+		else currentMovie.votes = currentMovie.votes -= 1;
+
+		setSearchedMovies(curr => {
+			return {...curr, [id]: currentMovie}
+		})
 	}
 	
 	return (
@@ -33,7 +42,7 @@ function App() {
 							<Home />
 						</Route>
 						<Route exact path = '/findMovies'>
-							<FindMovies getMovieDetails={getMovieDetails}/>
+							<FindMovies searchedMovies = {searchedMovies} getMovieDetails={getMovieDetails} doVote={doVote}/>
 						</Route>
 						<Route path = '/findMovies/:id'>
 							<MoviePage searchedMovies = {searchedMovies} />
