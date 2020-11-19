@@ -1,8 +1,18 @@
 const express = require('express');
 const Film = require('./filmModel');
-const { getTitleFromAPI, getMovieDetail } = require('./apiCalls')
+const { getTitleFromAPI, getMovieDetail, getCurrentMovies } = require('./apiCalls')
 
 const router = new express.Router();
+
+//Get existing movies from db
+router.get('/', async function (req, res, next){
+	try{
+		const currentMovies = await Film.getCurrentMovies();
+		return res.json(currentMovies)
+	} catch(err) {
+		next(err);
+	}
+})
 
 //Get list of titles
 router.get('/search/:title', async function(req, res, next){
@@ -27,25 +37,26 @@ router.get('/find/:id', async function(req, res, next){
 })
 
 //add a movie to your list
-router.post('/:id', async function(req, res, next){
-	const id = req.params.id;
-	const movieData = req.body;
+router.post('/add', async function(req, res, next){
+	const movie = req.body.movie;
+	console.log('movie is', movie)
 	try {
-		const movieInfo = await Film.addMovie(movieData, id);
-		return res.json(movieInfo)
+		const movieInfo = await Film.addMovie(movie);
+		console.debug("Movie successfully added to the db")
+		return res.json({movieInfo})
 	} catch(err){
 		next(err)
 	}
 })
 
 //vote on a movie in your
-router.post('/:id/:vote', async function(req, res, next){
+router.post('/vote/:id', async function(req, res, next){
 	const id = req.params.id;
-	const vote = req.params.id;
-	const movieData = req.body;
+	const vote = req.body.vote;
+	console.log('updated vote with', id, vote)
 	try {
-		const vote = await Film.vote(movieData, id, vote);
-		return res.json({"Voted":vote})
+		const updatedVotes = await Film.vote(id, vote);
+		return res.json({"Vote Count": updatedVotes})
 	} catch(err){
 		next(err)
 	}

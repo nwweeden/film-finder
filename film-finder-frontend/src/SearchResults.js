@@ -1,12 +1,12 @@
 import React from 'react';
 import MovieDetail from './MovieDetail'
 
-function SearchResults ({results, getMovieDetails}){
+function SearchResults ({searchResults, getMovieDetails}){
 	
-	let resultsDisplay = results.map(m => {
+	let resultsDisplay = searchResults.map(m => {
 		return <MovieDetail
 					movie = {m}
-					key={m.imbdID}
+					key={m.imdbID}
 					getMovieDetails={getMovieDetails}
 					type='list'
 					/>

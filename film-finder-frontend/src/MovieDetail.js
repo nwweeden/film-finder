@@ -1,23 +1,35 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link, useHistory } from 'react-router-dom'
-import './MovieDetail.css'
+import './MovieDetail.css';
+import {addMovieToDB, updateVoteInDB} from './api'
 
-function MovieDetail({movie, getMovieDetails, doVote, type}){
+function MovieDetail({movie, type}){
 	const history = useHistory();
-	
-	async function handleChoice(evt){
-		await getMovieDetails(movie.id);
-		history.push(`/findMovies/${movie.id}`)
+	const [votes, setVotes] = useState(movie.votes)
+
+	function handleChoice(evt){
+		history.push(`/findMovies/${movie.imdbID}`)
+	}
+
+	function handleAdd(evt){
+		addMovieToDB(movie);
+		history.push(`/findMovies`)
+	}
+
+	function doVote(id, direction){
+		let change = direction === 'up' ? 1 : -1
+		setVotes(votes + change)
+		updateVoteInDB(id, direction);
 	}
 
 	let voting =
 		<>
 			<div className="PostDisplay-votes">
-				<b>{movie.votes} votes:</b>
+				<b>{votes} votes:</b>
 				<i className="fas fa-thumbs-up text-success"
-						onClick={evt => doVote("up", movie.id)} />
+						onClick={evt => doVote(movie.imdbid, "up")} />
 				<i className="fas fa-thumbs-down text-danger"
-				onClick={evt => doVote("down", movie.id)} />
+				onClick={evt => doVote(movie.imdbid, "down")} />
 			</div>
 		</>
 
@@ -25,12 +37,12 @@ function MovieDetail({movie, getMovieDetails, doVote, type}){
 	if (type === 'detailed'){
 		display =
 			<>
-				<p>{movie.title}</p>
-				<img onClick={handleChoice} src={movie.poster} alt={movie.title} width="100"></img>
-				<p>{movie.year}</p>
-				<p>{movie.rating}</p>
-				<p>{movie.plot}</p>
-				{voting}
+				<p>{movie.Title}</p>
+				<img onClick={handleChoice} src={movie.Poster} alt={movie.Title} width="100"></img>
+				<p>{movie.Year}</p>
+				<p>{movie.imdbRating}</p>
+				<p>{movie.Plot}</p>
+				<button onClick={handleAdd}>Add to movie list</button>
 			</>
 	} else if (type === 'list'){
 		display =
@@ -41,8 +53,8 @@ function MovieDetail({movie, getMovieDetails, doVote, type}){
 	} else if (type === 'home'){
 		display =
 		<>
-			<p>{movie.Title}</p>
-			<img onClick={handleChoice} src={movie.Poster} alt={movie.Title} width="100"></img>
+			<p>{movie.title}</p>
+			<img onClick={handleChoice} src={movie.poster} alt={movie.title} width="100"></img>
 			{voting}
 		</>
 	}
