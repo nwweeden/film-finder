@@ -4,15 +4,13 @@ import { Card, CardBody, CardTitle } from 'reactstrap'
 /**
  * Renders New Item Form
  * 
- * App --> {NavBar, router(AddItem)}
+ * FindMovies --> SearchForm
  * 
  * State
  *  - Form data
- *  - Error messages
  * 
  * Props
- *  - title - value of what type of item is being added
- *  - addItem (function to handle posting a new item)
+ *  - searchTitle (fn to make call to backend)
  */
 function SearchForm({searchTitle}){
 
@@ -21,7 +19,6 @@ function SearchForm({searchTitle}){
 	}
 
 	const [formData, setFormData] = useState(initialState);
-	const [errorMessage, setErrorMessage] = useState('');
 
 	function handleChange(evt){
 		const {name, value } = evt.target;
@@ -38,7 +35,7 @@ function SearchForm({searchTitle}){
 		try {
 			await searchTitle(formData)
 		} catch(err){
-			setErrorMessage('No results for that title')
+			console.debug('Failed to submit form')
 		}
 	}
 
@@ -46,7 +43,7 @@ function SearchForm({searchTitle}){
 		<Card>
 			<CardBody>
 				<CardTitle>
-					<h3>Search for a Movie title!</h3>
+					<h3>Search for a Movie!</h3>
 				</CardTitle>
 				<form onSubmit = {handleSubmit}>
 
@@ -59,7 +56,6 @@ function SearchForm({searchTitle}){
 
 					<button> Search </button>
 				</form>
-				{errorMessage && <div>{errorMessage}</div>}
 			</CardBody>
 		</Card>
 	)

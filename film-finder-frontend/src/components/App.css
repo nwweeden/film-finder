@@ -1,0 +1,11 @@
+nav a {
+	margin-right: 1em;
+}
+
+nav a.active {
+	font-weight: bold; 
+}
+
+.App-container{
+	background-color: #9DD9D2;
+}

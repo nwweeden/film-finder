@@ -1,13 +1,22 @@
 import React, {useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
-
 import MovieDetail from './MovieDetail';
 import SearchForm from './SearchForm';
-import SearchResults from './SearchResults';
-import NavBar from './NavBar'
-import { getMovieFromAPI } from './api'
+import { getMovieFromAPI } from '../api/api'
 
-function MoviePage({searchedMovies, addMovie}){
+/**
+ * Requests information about a searched movie and renders detail
+ * 
+ * App --> MoviePage --> {MovieDetail}
+ * 
+ * State:
+ *  - Information about one movie
+ *  - loading page while request is made
+ * 
+ * Props:
+ *  - addMovie(fn )
+ */
+function MoviePage({ addMovie }){
 
 	const { id } = useParams();
 
@@ -35,7 +44,6 @@ function MoviePage({searchedMovies, addMovie}){
 	
 	return (
 		<>
-			<NavBar />
 			<SearchForm />
 			{movieDetailDisplay}
 		</>
