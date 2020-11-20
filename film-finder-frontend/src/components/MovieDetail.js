@@ -63,29 +63,31 @@ function MovieDetail({ movie, type, deleteMovie }) {
 			</>
 	} else if (type === 'list') {
 		display =
-			<>
-				<p>
+			<div className='movie-container'>
+				<h6>
 					{movie.Title || movie.title}
-				</p>
-				<img
-					onClick={handleChoice}
-					src={movie.Poster || movie.poster}
-					alt={movie.Title || movie.title}
-					width="100">
-				</img>
-				{deleteMovie &&
-					<div>
-						<button onClick={handleRemove}>Remove Movie</button>
-						<div className="PostDisplay-votes">
-							<b>{votes} votes:</b>
-							<i className="fas fa-thumbs-up text-success"
-								onClick={evt => doVote(movie.imdbid, "up")} />
-							<i className="fas fa-thumbs-down text-danger"
-								onClick={evt => doVote(movie.imdbid, "down")} />
+				</h6>
+				<div className='detail-container'>
+					<img
+						onClick={handleChoice}
+						src={movie.Poster || movie.poster}
+						alt={movie.Title || movie.title}
+						height="200">
+					</img>
+					{deleteMovie &&
+						<div>
+							<div className="PostDisplay-votes">
+								<b>{votes} votes:</b>
+								<i className="fas fa-thumbs-up text-success"
+									onClick={evt => doVote(movie.imdbid, "up")} />
+								<i className="fas fa-thumbs-down text-danger"
+									onClick={evt => doVote(movie.imdbid, "down")} />
+							</div>
+							<button className='btn btn-warning' onClick={handleRemove}>Remove Movie</button>
 						</div>
-					</div>
-				}
-			</>
+					}
+				</div>
+			</div>
 	}
 
 	return (

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, CardBody, CardTitle } from 'reactstrap'
+import './SearchForm.css';
 
 /**
  * Renders New Item Form
@@ -40,24 +40,22 @@ function SearchForm({searchTitle}){
 	}
 
 	return (
-		<Card>
-			<CardBody>
-				<CardTitle>
-					<h3>Search for a Movie!</h3>
-				</CardTitle>
+			<div className='search-form'>
+				<h3>Search for a Movie!</h3>
 				<form onSubmit = {handleSubmit}>
+					<div className='form-group'>
+						<label htmlFor='title'>Title:</label>
+						<input
+							className='form-control'
+							name='title'
+							value={formData.title}
+							onChange={handleChange}
+						/>
+						<button className='btn btn-primary'> Search </button>
+					</div>
 
-					<label htmlFor='title'>Title:</label>
-					<input
-						name='title'
-						value={formData.title}
-						onChange={handleChange}
-					/>
-
-					<button> Search </button>
 				</form>
-			</CardBody>
-		</Card>
+			</div>
 	)
 }
 

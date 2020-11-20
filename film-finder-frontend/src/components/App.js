@@ -18,10 +18,10 @@ function App() {
 	return (
     <div className="App-container">
 			<header className="App-header">
-				<h1 className="App-title display-3">Film Finder</h1>
+				<h1 className="App-title">Film Finder</h1>
 				<nav>
-					<NavLink exact to="/" className="navbar-brand">Welcome</NavLink>
-					<NavLink to="/findMovies">Find Movies</NavLink>
+					<NavLink to="/" className="navbar-brand">Welcome</NavLink>
+					<NavLink to="/findMovies" className="navbar-brand">Find Movies</NavLink>
 				</nav>
 			</header>
 

@@ -1,14 +1,21 @@
-.MovieDisplay {
-  position: relative;
+.PostDisplay-votes * {
+	margin: 5px;
 }
 
-.MovieDisplay-right {
-  position: absolute;
-  right: 0;
-  top: 1em;
-  text-align: right;
+.movie-container h6 {
+	font-style: italic;
+	padding: 5px;
+	overflow-wrap: normal;
 }
 
-.MovieDisplay-right i {
-  margin-left: 1em;
+.movie-container * {
+	margin: 5px;
+}
+
+.detail-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin: 5px;
+
 }

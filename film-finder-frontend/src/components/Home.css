@@ -1,6 +1,6 @@
 .container {
 	overflow: hidden;
-	display: flex;
+	display:	 flex;
 	flex-direction: column;
 	align-items: center;
 	background-color: #FFBF00;
@@ -25,14 +25,12 @@
   height: 500px;
 	animation: slide 60s linear infinite;
 	display: flex;
+	padding-left: 1500px;
 }
 
 .posters div {
 	color: #E83F6F;
 	width: 200px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 
 .posters div p {

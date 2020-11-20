@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import SearchForm from './SearchForm';
 import { getTitlesFromAPI, getExistingMovies, deleteMovieFromDB } from '../api/api'
 import MovieDetail from './MovieDetail';
+import './FindMovies.css'
 
 /**
  * Renders a page with saved movies and ability to search for new movies
@@ -71,15 +72,15 @@ function FindMovies() {
 			/>)
 
 	return (
-		<>
+		<div className = 'film-finder'>
 			<SearchForm searchTitle={searchTitle} />
-			<ul>
+			<div className = 'searched-movies'>
 				{displaySearchedTitles}
-			</ul>
-			<ul>
+			</div>
+			<div className='saved-movies'>
 				{displaySavedMovies}
-			</ul>
-		</>
+			</div>
+		</div>
 	)
 }
 

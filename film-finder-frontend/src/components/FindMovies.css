@@ -1,0 +1,41 @@
+.film-finder {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.saved-movies {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 80%;
+	justify-content: center;
+}
+
+.searched-movies {
+	display: flex;
+	position: absolute;
+	top: 250px;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	background-color: rgba(201, 76, 76, .9);
+	width: 80%;
+	border: 1px solid black;
+	margin-top: 5px;
+}
+
+.saved-movies .movie-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 5px;
+	background-color: lightgrey;
+	border: 1px solid black;
+	border-radius: 45px;
+	width: 400px;
+}
+
+.searched-movies .movie-container {
+	width: 200px;
+}
