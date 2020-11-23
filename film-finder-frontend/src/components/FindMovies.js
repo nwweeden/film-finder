@@ -18,7 +18,7 @@ import './FindMovies.css'
  */
 function FindMovies() {
 
-	const [searchResults, setSearchResults] = useState([]);
+	const [searchResults, setSearchResults] = useState(null);
 	const [savedMovies, setSavedMovies] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 
@@ -53,6 +53,11 @@ function FindMovies() {
 		setSavedMovies(curr => curr.filter(m => m.imdbid !== id))
 	}
 
+	//Clear Search Results
+	function clearSearchResults(){
+		setSearchResults(null)
+	}
+
 	const displaySavedMovies = isLoading ?
 		<h1>Loading Saved Movies...</h1> :
 		savedMovies.map(m =>
@@ -63,20 +68,22 @@ function FindMovies() {
 				type='list'
 			/>)
 	
-	const displaySearchedTitles =
+	const displaySearchedTitles = searchResults ?
 		searchResults.map(m =>
 			<MovieDetail
 				movie={m}
 				key={m.imdbID}
 				type='list'
-			/>)
+			/>) : null;
 
 	return (
 		<div className = 'film-finder'>
 			<SearchForm searchTitle={searchTitle} />
+			{searchResults &&
 			<div className = 'searched-movies'>
+				<button className ='btn btn-danger' onClick={clearSearchResults}>X</button>
 				{displaySearchedTitles}
-			</div>
+			</div>}
 			<div className='saved-movies'>
 				{displaySavedMovies}
 			</div>

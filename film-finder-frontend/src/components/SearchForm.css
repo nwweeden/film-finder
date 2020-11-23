@@ -1,11 +1,10 @@
 .search-form {
-	border: 1px solid black;
 	border-radius: 40px;
-	width: 50%;
+	width: 500px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: lightgray;
+	color: white
 }
 
 .form-group {

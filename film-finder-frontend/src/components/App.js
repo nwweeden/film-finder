@@ -18,10 +18,10 @@ function App() {
 	return (
     <div className="App-container">
 			<header className="App-header">
-				<h1 className="App-title">Film Finder</h1>
-				<nav>
-					<NavLink to="/" className="navbar-brand">Welcome</NavLink>
-					<NavLink to="/findMovies" className="navbar-brand">Find Movies</NavLink>
+				<h1>Film Finder</h1>
+				<nav className='navbar-expand-lg'>
+					<NavLink to="/" className="nav-item nav-link active">Welcome Page</NavLink>
+					<NavLink to="/findMovies" className="nav-item nav-link">Find Movies</NavLink>
 				</nav>
 			</header>
 

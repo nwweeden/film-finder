@@ -8,34 +8,56 @@
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	width: 80%;
+	width: 90%;
 	justify-content: center;
 }
 
-.searched-movies {
-	display: flex;
-	position: absolute;
-	top: 250px;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: center;
-	background-color: rgba(201, 76, 76, .9);
-	width: 80%;
-	border: 1px solid black;
-	margin-top: 5px;
-}
-
-.saved-movies .movie-container {
+.saved-movies .list-movie-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin: 5px;
-	background-color: lightgrey;
-	border: 1px solid black;
-	border-radius: 45px;
+	margin: 1px;
+	background-color: #151514;
+	border: 1px solid #CFDBD5;
+	color: #CFDBD5;
 	width: 400px;
+	height: 280px;
+	overflow: hidden;
+}
+.searched-movies {
+	display: flex;
+	position: absolute;
+	top: 240px;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	background-color: #242423;
+	border: 1px solid #CFDBD5;
+	width: 90%;
+	margin-top: 5px;
 }
 
-.searched-movies .movie-container {
+.searched-movies h6 {
+	color: #CFDBD5;
+	text-align: center;
+}
+
+.searched-movies .info-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.searched-movies .list-movie-container {
+	margin-top: 20px;
 	width: 200px;
+	height: 280px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	/* padding-bottom: 100px; */
+}
+
+.searched-movies button {
+	margin: 5px 5px;
+	height: 40px;
 }

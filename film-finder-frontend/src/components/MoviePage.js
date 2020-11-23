@@ -13,10 +13,9 @@ import { getMovieFromAPI } from '../api/api'
  *  - Information about one movie
  *  - loading page while request is made
  * 
- * Props:
- *  - addMovie(fn )
+ * Props: none
  */
-function MoviePage({ addMovie }){
+function MoviePage( ){
 
 	const { id } = useParams();
 
@@ -39,12 +38,11 @@ function MoviePage({ addMovie }){
 	const movieDetailDisplay = (isLoading ?
 		<h1>Movie Details Loading...</h1> :
 		<div>
-			<MovieDetail movie={movie} addMovie={addMovie} type='detailed'/>
+			<MovieDetail movie={movie} type='detailed'/>
 		</div>)
 	
 	return (
 		<>
-			<SearchForm />
 			{movieDetailDisplay}
 		</>
 	)
