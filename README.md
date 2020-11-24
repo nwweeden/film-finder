@@ -8,16 +8,12 @@ This repository contains two separate applications: film-finder-frontend which i
 
 ## Getting Started
 1. Clone the repository
-
-Back End:
 2. `cd film-finder-backend`
 3. `npm run seed` to create and set up your db
 4. `npm install` to install dependencies
 5. Visit https://rapidapi.com/rapidapi/api/movie-database-imdb-alternative to set up an account and obtain a custom RapidAPI key
 6. create a `projectSecrets.js` file and assign your `IMBD_API_KEY` equal to your custom key
 7. `npm start`
-
-Front End:
 8. `cd film-finder-frontend`
 9. `npm install` to install dependencies
 10. `npm start` to launch the application
