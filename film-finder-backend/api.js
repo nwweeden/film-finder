@@ -8,7 +8,7 @@ const IMDB_URL = 'https://movie-database-imdb-alternative.p.rapidapi.com/'
 async function getTitleFromAPI(title) {
 	const result = await axios.get(`${IMDB_URL}?s=${title}`, {
 		headers: {
-			'x-rapidapi-key': IMBD_API_KEY
+			'x-rapidapi-key': IMDB_API_KEY
 		}
 	})
 	return result.data.Search;

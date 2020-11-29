@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
 import MovieDetail from './MovieDetail';
-import SearchForm from './SearchForm';
 import { getMovieFromAPI } from '../api/api'
 
 /**
