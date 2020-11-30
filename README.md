@@ -4,10 +4,10 @@
 
 This is a full stack application that allows a user to search, save, and vote on movies.
 
-![Welcome Page](/screenshots/homepage.png =100x)
-![Search For Movies](/screenshots/search.png =100x)
-![View Movie Detail](/screenshots/movieDetail.png =100x)
-![Vote On Saved Movies](/screenshots/vote.png =100x)
+<img src="/screenshots/homepage.png" alt="Welcome Page" width="200"/>
+<img src="/screenshots/search.png" alt="Search For Movies" width="200"/>
+<img src="/screenshots/movieDetail.png" alt="View Movie Detail" width="200"/>
+<img src="/screenshots/vote.png" alt="Vote On Saved Movies" width="200"/>
 
 This repository contains two separate applications: film-finder-frontend which is a Create React App for the frontend and film-finder-backend which is a Node API for the backend.
 
