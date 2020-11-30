@@ -6,6 +6,7 @@ CREATE TABLE films (
 		year text NOT NULL,
 		plot text NOT NULL,
 		imdbRating text NOT NULL,
-		votes integer DEFAULT 0
+		upvotes integer DEFAULT 0,
+		downvotes integer DEFAULT 0
 );
 

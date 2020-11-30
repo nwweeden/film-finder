@@ -19,7 +19,8 @@ import defaultPoster from '../noposter.jpg'
  */
 function MovieDetail({ movie, type, deleteMovie }) {
 	const history = useHistory();
-	const [votes, setVotes] = useState(movie.votes)
+	const [upVotes, setUpVotes] = useState(movie.upvotes)
+	const [downVotes, setDownVotes] = useState(movie.downvotes)
 
 	let moviePoster;
 	if (movie.Poster){
@@ -45,8 +46,11 @@ function MovieDetail({ movie, type, deleteMovie }) {
 
 	//On click, change the vote in the DB and in state
 	function doVote(id, direction) {
-		let change = direction === 'up' ? 1 : -1
-		setVotes(votes + change)
+		if (direction === 'up'){
+			setUpVotes(upVotes + 1)
+		} else {
+			setDownVotes(downVotes + 1)
+		}
 		updateVoteInDB(id, direction);
 	}
 
@@ -64,7 +68,8 @@ function MovieDetail({ movie, type, deleteMovie }) {
 					alt={movie.Title}></img>
 				<div className='detailed-info-container'>
 					<h4>{movie.Title}</h4>
-					<p>Release Year: {movie.Year}</p>
+					<i>{movie.Director}</i>
+					<p>Release Year: {movie.Year || 'No Director Listed'}</p>
 					<p>Rating: {movie.imdbRating}</p>
 					<i>{movie.Plot}</i>
 					<div className='buttons'>
@@ -88,9 +93,10 @@ function MovieDetail({ movie, type, deleteMovie }) {
 					{deleteMovie &&
 						<div>
 							<div className="PostDisplay-votes">
-								<b>{votes} votes:</b>
+								<b>{upVotes}</b>
 								<i className="fas fa-thumbs-up text-success"
 									onClick={evt => doVote(movie.imdbid, "up")} />
+								<b>{downVotes}</b>
 								<i className="fas fa-thumbs-down text-danger"
 									onClick={evt => doVote(movie.imdbid, "down")} />
 							</div>
